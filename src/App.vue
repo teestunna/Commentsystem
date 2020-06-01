@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1 class="comment-box">Comment Box</h1>
+    <ul class="comment-list">
+      <Comment 
+        v-if="commentDetails.length"
+        :commentDetail="commentDetails"/>
+    </ul>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Comment from '@/components/views/Comment.vue' // Comment component
+  import commentDetails from '@/components/data/commentDetails' // Object containing the comment details
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Comment
+  },
+  data() {
+    return {
+      commentDetails // Comment details array state
+    }
   }
 }
 </script>
@@ -24,5 +34,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.comment-list {
+  list-style-type: none;
 }
 </style>
